@@ -127,14 +127,29 @@ class SinglyLinkedList{
         //새 노드를 이전의 next노드로 연결
         //길이 + 1
         //true 반환
+        // if(index < 0 || index > this.length) return false;
+        // if(index === 0) this.unshift(val);
+        // if(index = this.length) this.push(val);
+        // let newNode = new Node();
+        // newNode.next = this.get(index);
+        // this.get(index - 1).next = newNode;
+        // this.length ++;
+        // return true
+
         if(index < 0 || index > this.length) return false;
-        if(index === 0) this.unshift(val);
-        if(index = this.length) this.push(val);
-        let newNode = new Node();
+        if(index === 0) {
+            this.unshift(val);
+            return true;
+        }
+        if(index === this.length) {
+            this.push(val);
+            return true;
+        }
+        let newNode = new Node(val);
         newNode.next = this.get(index);
         this.get(index - 1).next = newNode;
         this.length ++;
-        return true
+        return true;
     }
 }
 
