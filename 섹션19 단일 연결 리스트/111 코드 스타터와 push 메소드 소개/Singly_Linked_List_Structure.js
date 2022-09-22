@@ -84,6 +84,21 @@ class SinglyLinkedList{
         this.length++;
         return this;
     }
+    get(index){
+        //인덱스가 음수거나, 리스트의 길이보다 같거나 클 경우 null반환
+        //루프를 통해 인덱스가 지정하는 위치에 이를때까지 반복해서 이동한 다음 해당 위치에 있는 노드를 반환한다.
+        //이동한 횟수를 추적하는 counter변수를 사용해서 while루프에서 한 것 처럼 루프내부에서 .next를 반복
+        //매번 이동할때마다 counter를 증가
+        //그리고 그 카운터를 리턴
+        if(index < 0 || index >= this.length) return null;
+        let counter = 0;
+        let current = this.head;
+        while(index !== counter){
+            current = current.next;
+            counter ++;
+        }
+        return current;
+    }
 }
 
 // var first = new Node("Hi")
@@ -95,12 +110,7 @@ class SinglyLinkedList{
 var list = new SinglyLinkedList()
 list.push("HELLO")
 list.push("GOODBYE")
-console.log(list);
-//console.log(list.shift());
-console.log(list.pop())
-console.log(list.pop())
-console.log(list.pop())
-console.log(list.unshift(123));
-console.log(list);
-
+list.push("!") 
+list.push("<3")
+list.push(":)") 
 
