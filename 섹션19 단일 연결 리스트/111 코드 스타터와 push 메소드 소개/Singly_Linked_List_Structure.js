@@ -51,7 +51,21 @@ class SinglyLinkedList{
             }
             return current;
         }
-
+    }
+    shift(){
+        //노드가 없을 경우 undefined 반환
+        //노드가 있을 경우 현재의 헤드 속성을 변수에 저장
+        //현재 헤드의 next노드를 가리키도록 헤드 속성을 업데이트
+        //리스트의 길이를 1만큼 줄이기
+        //제거된 이전 노드의 값을 반환
+        if(!this.head) return undefined;
+        let currentHead = this.head;
+        this.head = currentHead.next;
+        this.length--;
+        if(this.length === 0){
+            this.tail === null;
+        }
+        return currentHead;
     }
 }
 
@@ -65,8 +79,8 @@ var list = new SinglyLinkedList()
 list.push("HELLO")
 list.push("GOODBYE")
 console.log(list);
-console.log(list.pop());
-console.log(list.pop());
+//console.log(list.shift());
+console.log(list.shift());
 console.log(list);
 
 
