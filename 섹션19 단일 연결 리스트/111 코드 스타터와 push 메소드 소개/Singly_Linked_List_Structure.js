@@ -46,11 +46,12 @@ class SinglyLinkedList{
             this.tail.next = null;
             this.length--;
             if(this.length === 0){
-                this.head === null;
-                this.tail === null;
+                this.head = null;
+                this.tail = null;
             }
             return current;
         }
+        
     }
     shift(){
         //노드가 없을 경우 undefined 반환
@@ -67,6 +68,22 @@ class SinglyLinkedList{
         }
         return currentHead;
     }
+    unshift(val){
+        //새로운 노드 생성
+        //헤드가 있는지 체크, 헤드가 없다면 헤드와 테일 모두 새로운 노드를 가리키도록 한다.
+        //노드가 이미 있다면, 새롭게 생성된 노드의 next를 현재의 헤드로 설정하고, 헤드가 새롭게 생성된 노드를 가리키도록 한뒤
+        //리스트 길이를 1증가시킨후 마지막으로 연결된 리스트를 반환한다.
+        let newNode = new Node(val);
+        if(!this.head){
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
+    }
 }
 
 // var first = new Node("Hi")
@@ -80,7 +97,10 @@ list.push("HELLO")
 list.push("GOODBYE")
 console.log(list);
 //console.log(list.shift());
-console.log(list.shift());
+console.log(list.pop())
+console.log(list.pop())
+console.log(list.pop())
+console.log(list.unshift(123));
 console.log(list);
 
 
