@@ -99,6 +99,43 @@ class SinglyLinkedList{
         }
         return current;
     }
+    
+    set(index, val){
+        //원하는 노드를 찾기 위해 get메서드 활용, 노드가 없을 경우에도 get이 처리할 것
+        //노드를 찾지 못했다면 false 반환
+        //노드를 찾았다면 해당 노드 값을 인자로 받은 값으로 업데이트하고, true 반환
+        // if(this.get(index) === null) return false;
+        // else{
+        //     this.get(index).val = val;
+        //     return true;
+        // }
+        let foundNode = this.get(index);
+        if(foundNode){
+            foundNode.val = val;
+            return true;
+        }
+        return false;
+    }
+
+    insert(index, val){
+        //인덱스가 0보다 작거나 리스트의 길이보다 클경우 false반환
+        //이때 리스트의 길이랑 같을 경우에는 push메서드 쓰면됨.
+        //맨 앞에 삽입하려거든 그냥 unshift쓰면됨.
+        //새로운 노드 생성
+        //삽입하려는 인덱스 위치의 앞에 있는 노드를 찾아야함 -> get(index - 1)
+        //삽입하려는 인덱스의 앞에 있는 노드의 next는 삽입하려는 노드를 가리켜야함
+        //새 노드를 이전의 next노드로 연결
+        //길이 + 1
+        //true 반환
+        if(index < 0 || index > this.length) return false;
+        if(index === 0) this.unshift(val);
+        if(index = this.length) this.push(val);
+        let newNode = new Node();
+        newNode.next = this.get(index);
+        this.get(index - 1).next = newNode;
+        this.length ++;
+        return true
+    }
 }
 
 // var first = new Node("Hi")
