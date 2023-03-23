@@ -21,3 +21,15 @@ Time - O(n log n)
 
 Space - O(1)
 */
+
+function areThereDuplicates(...args) {
+  let arr = [...args];
+  let frequencyCounter = {};
+  for (let el of arr) {
+    frequencyCounter[el] ? frequencyCounter[el]++ : (frequencyCounter[el] = 1);
+  }
+  for (let key in frequencyCounter) {
+    if (frequencyCounter[key] > 1) return true;
+  }
+  return false;
+}
