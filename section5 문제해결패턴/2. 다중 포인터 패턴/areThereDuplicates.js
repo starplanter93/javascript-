@@ -21,3 +21,22 @@ Time - O(n log n)
 
 Space - O(1)
 */
+
+function areThereDuplicates(...args) {
+  args.sort((a, b) => a > b);
+  let start = 0;
+  let next = 1;
+  while (next < args.length) {
+    if (args[start] === args[next]) {
+      return true;
+    }
+    start++;
+    next++;
+  }
+  return false;
+}
+
+// set을 쓰면 매우 편함
+function areThereDuplicates_set() {
+  return new Set(arguments).size !== arguments.length;
+}
